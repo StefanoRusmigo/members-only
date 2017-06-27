@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+  <li><%= user.name %>
+  <%= user.email %>
+  <%= user.member ? "Member": "Non-Member" %>
+
+  <% if current_user && current_user.admin %>
+    <%= link_to 'delete', user, :method=>:delete %>
+  
+    <%= link_to 'member', member_url(:user => user), :method=>:post unless user.member %></li>
+  <% end %>
+
+<% end %>

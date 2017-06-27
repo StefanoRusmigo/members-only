@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MembersOnly</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <% if is_logged_in? %>
+     <h1>Logged in <%= current_user.name %></h1>
+     <%= link_to 'logout',  logout_path, method: :delete %>
+     <% end %>
+  <%= render 'shared/flash' %>
+
+    <%= yield %>
+  </body>
+</html>
